@@ -3,270 +3,759 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Studio 23 — Barber</title>
+<title>Studio 23 | Barber Studio</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --black:#070707;
+  --dark:#0e0e0e;
+  --card:#141414;
+  --gold:#c8a96b;
+  --gold-light:#e7cc98;
+  --white:#f7f5ef;
+  --gray:#999;
+  --line:rgba(255,255,255,.1);
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #0b0b0b;
-  color: #ffffff;
-  line-height: 1.6;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-nav {
-  height: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 7%;
-  border-bottom: 1px solid #222;
-  background: #0b0b0b;
+html{
+  scroll-behavior:smooth;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 2px;
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
-nav a {
-  color: #ddd;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 14px;
+body.lock{
+  overflow:hidden;
 }
 
-nav a:hover {
-  color: #fff;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-.hero {
-  min-height: 650px;
-  display: flex;
-  align-items: center;
-  padding: 70px 7%;
+button{
+  font:inherit;
+}
+
+/* ================= NAVBAR ================= */
+
+.header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  transition:.4s;
+}
+
+.header.scrolled{
+  background:rgba(7,7,7,.86);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  width:90%;
+  max-width:1200px;
+  height:85px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+
+.nav-links a{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#ddd;
+  position:relative;
+}
+
+.nav-links a:not(.nav-button)::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:.3s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-button{
+  border:1px solid var(--gold);
+  color:var(--gold)!important;
+  padding:12px 19px;
+  border-radius:30px;
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+
   background:
-    linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.45)),
-    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=80")
+    linear-gradient(90deg,
+      rgba(0,0,0,.95) 0%,
+      rgba(0,0,0,.72) 48%,
+      rgba(0,0,0,.35) 100%),
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=90")
     center/cover;
 }
 
-.hero-content {
-  max-width: 620px;
+.hero::after{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  right:-200px;
+  top:20%;
+  border-radius:50%;
+  background:rgba(200,169,107,.08);
+  filter:blur(70px);
 }
 
-.small-title {
-  color: #c9a45c;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 12px;
-  margin-bottom: 18px;
+.hero-content{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+  padding-top:80px;
+  animation:heroIn 1s ease forwards;
 }
 
-h1 {
-  font-size: clamp(50px, 8vw, 90px);
-  line-height: .95;
-  margin-bottom: 25px;
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
-.hero p {
-  color: #d0d0d0;
-  max-width: 500px;
-  margin-bottom: 35px;
-  font-size: 17px;
+.tag{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:22px;
 }
 
-.buttons {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+.hero h1{
+  font-size:clamp(65px,10vw,135px);
+  line-height:.82;
+  letter-spacing:-6px;
+  max-width:900px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 14px 25px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 700;
-  transition: .25s;
+.hero h1 span{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.7);
 }
 
-.btn-main {
-  background: #c9a45c;
-  color: #111;
+.hero-text{
+  color:#ccc;
+  max-width:560px;
+  font-size:17px;
+  margin:30px 0;
 }
 
-.btn-main:hover {
-  transform: translateY(-2px);
+.buttons{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
 }
 
-.btn-second {
-  border: 1px solid #555;
-  color: white;
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:15px 25px;
+  border-radius:40px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.btn-second:hover {
-  border-color: #c9a45c;
+.btn:hover{
+  transform:translateY(-4px);
 }
 
-section {
-  padding: 90px 7%;
+.btn-gold{
+  background:var(--gold);
+  color:#111;
+  box-shadow:0 10px 35px rgba(200,169,107,.2);
 }
 
-.section-title {
-  max-width: 650px;
-  margin-bottom: 45px;
+.btn-outline{
+  border:1px solid rgba(255,255,255,.3);
+  color:white;
+  background:rgba(255,255,255,.03);
 }
 
-.section-title span {
-  color: #c9a45c;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
+.btn-outline:hover{
+  border-color:var(--gold);
 }
 
-.section-title h2 {
-  font-size: 42px;
-  margin-top: 10px;
+.scroll{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  font-size:9px;
+  letter-spacing:4px;
+  color:#aaa;
+  text-transform:uppercase;
 }
 
-.section-title p {
-  color: #999;
-  margin-top: 12px;
+.scroll-line{
+  width:1px;
+  height:40px;
+  background:linear-gradient(var(--gold),transparent);
+  margin:8px auto 0;
 }
 
-.services {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+/* ================= GENERAL ================= */
+
+section{
+  padding:120px 0;
 }
 
-.card {
-  background: #131313;
-  border: 1px solid #242424;
-  padding: 30px;
-  border-radius: 8px;
-  transition: .25s;
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #c9a45c;
+.kicker{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:10px;
+  font-weight:bold;
 }
 
-.card-number {
-  color: #c9a45c;
-  font-size: 13px;
+.section-title{
+  font-size:clamp(42px,6vw,70px);
+  line-height:.95;
+  letter-spacing:-3px;
+  margin-top:14px;
 }
 
-.card h3 {
-  margin: 12px 0 8px;
-  font-size: 22px;
+.section-description{
+  color:var(--gray);
+  max-width:500px;
+  margin-top:20px;
 }
 
-.card p {
-  color: #999;
-  font-size: 14px;
+/* ================= SERVICES ================= */
+
+.services-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:55px;
 }
 
-.price {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: bold;
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.about {
-  background: #111;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
+.service{
+  min-height:300px;
+  padding:32px;
+  background:linear-gradient(145deg,#171717,#0d0d0d);
+  border:1px solid var(--line);
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  transition:.4s;
 }
 
-.about-image {
-  min-height: 450px;
-  border-radius: 8px;
+.service::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  right:-100px;
+  top:-100px;
+  border-radius:50%;
+  background:rgba(200,169,107,.07);
+  transition:.5s;
+}
+
+.service:hover{
+  transform:translateY(-10px);
+  border-color:rgba(200,169,107,.55);
+}
+
+.service:hover::before{
+  transform:scale(1.8);
+}
+
+.service-number{
+  color:var(--gold);
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+.service h3{
+  font-size:27px;
+  margin-top:70px;
+}
+
+.service p{
+  color:var(--gray);
+  font-size:14px;
+  margin-top:8px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+  margin-top:24px;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+  background:#0c0c0c;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.about-image{
+  height:600px;
+  border-radius:22px;
   background:
-    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=80")
+    linear-gradient(180deg,transparent 40%,rgba(0,0,0,.5)),
+    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=90")
     center/cover;
+  transition:.5s;
 }
 
-.about-text h2 {
-  font-size: 45px;
-  margin: 12px 0 20px;
+.about-image:hover{
+  transform:scale(1.015);
 }
 
-.about-text p {
-  color: #aaa;
-  margin-bottom: 20px;
+.about-text p{
+  color:var(--gray);
+  margin-top:20px;
+  line-height:1.8;
 }
 
-.contact {
-  text-align: center;
-  background: #0b0b0b;
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:35px;
 }
 
-.contact h2 {
-  font-size: 45px;
-  margin: 10px 0 15px;
+.stat{
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
 }
 
-.contact p {
-  color: #999;
-  margin-bottom: 30px;
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:var(--gold);
 }
 
-footer {
-  padding: 30px 7%;
-  border-top: 1px solid #222;
-  color: #777;
-  font-size: 13px;
-  text-align: center;
+.stat small{
+  color:#777;
 }
 
-@media (max-width: 800px) {
+/* ================= GALLERY ================= */
 
-  nav {
-    padding: 0 5%;
+.gallery{
+  display:grid;
+  grid-template-columns:1.3fr .7fr .7fr;
+  grid-template-rows:240px 240px;
+  gap:12px;
+  margin-top:50px;
+}
+
+.gallery-item{
+  border:0;
+  padding:0;
+  overflow:hidden;
+  border-radius:16px;
+  cursor:pointer;
+  background:#111;
+  position:relative;
+}
+
+.gallery-item:first-child{
+  grid-row:span 2;
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.6s;
+}
+
+.gallery-item::after{
+  content:"Voir +";
+  position:absolute;
+  right:15px;
+  bottom:15px;
+  background:rgba(0,0,0,.65);
+  color:white;
+  padding:7px 12px;
+  border-radius:30px;
+  font-size:10px;
+  opacity:0;
+  transform:translateY(8px);
+  transition:.3s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.08);
+}
+
+.gallery-item:hover::after{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+  background:
+    radial-gradient(circle at 80% 20%,rgba(200,169,107,.12),transparent 35%),
+    #101010;
+}
+
+.cta-box{
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+}
+
+.cta h2{
+  font-size:clamp(42px,6vw,70px);
+  line-height:.95;
+}
+
+.cta p{
+  color:var(--gray);
+  margin-top:20px;
+}
+
+.contact-list{
+  display:grid;
+  gap:12px;
+}
+
+.contact-link{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#141414;
+  transition:.3s;
+}
+
+.contact-link:hover{
+  border-color:var(--gold);
+  transform:translateX(5px);
+}
+
+.contact-link span:last-child{
+  color:var(--gold);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:35px 0;
+  color:#777;
+  font-size:12px;
+}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+}
+
+/* ================= ANIMATIONS ================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:.8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(15px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:2000;
+}
+
+.modal.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-card{
+  width:min(520px,100%);
+  background:#111;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:32px;
+  position:relative;
+  transform:translateY(20px) scale(.97);
+  transition:.3s;
+}
+
+.modal.active .modal-card{
+  transform:none;
+}
+
+.close{
+  position:absolute;
+  top:12px;
+  right:17px;
+  border:0;
+  background:none;
+  color:#aaa;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.modal h3{
+  font-size:34px;
+  margin:10px 0;
+}
+
+.modal p{
+  color:var(--gray);
+  margin-bottom:20px;
+}
+
+.form{
+  display:grid;
+  gap:12px;
+}
+
+.form input,
+.form select{
+  width:100%;
+  padding:15px;
+  background:#1a1a1a;
+  color:white;
+  border:1px solid #292929;
+  border-radius:10px;
+  outline:none;
+}
+
+.form input:focus,
+.form select:focus{
+  border-color:var(--gold);
+}
+
+/* ================= TOP BUTTON ================= */
+
+.top{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(200,169,107,.5);
+  background:#111;
+  color:var(--gold);
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:900;
+}
+
+.top.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:850px){
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:85px;
+    left:5%;
+    right:5%;
+    background:#101010;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:12px;
+    flex-direction:column;
+    gap:4px;
   }
 
-  nav a {
-    display: none;
+  .nav-links.open{
+    display:flex;
   }
 
-  .hero {
-    min-height: 600px;
-    padding: 60px 6%;
+  .nav-links a{
+    padding:14px;
   }
 
-  section {
-    padding: 70px 6%;
+  .menu{
+    display:block;
   }
 
-  .services {
-    grid-template-columns: 1fr;
+  .services-head{
+    display:block;
   }
 
-  .about {
-    grid-template-columns: 1fr;
-    gap: 35px;
+  .services{
+    grid-template-columns:1fr;
   }
 
-  .about-image {
-    min-height: 350px;
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:35px;
   }
 
-  .section-title h2,
-  .about-text h2,
-  .contact h2 {
-    font-size: 35px;
+  .about-image{
+    height:430px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:220px 220px 220px;
+  }
+
+  .gallery-item:first-child{
+    grid-column:span 2;
+    grid-row:auto;
+  }
+
+  .cta-box{
+    grid-template-columns:1fr;
+    padding:35px 25px;
+  }
+}
+
+@media(max-width:520px){
+
+  .hero h1{
+    font-size:62px;
+    letter-spacing:-3px;
+  }
+
+  .hero-text{
+    font-size:15px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+    grid-template-rows:220px 220px 220px 220px;
+  }
+
+  .gallery-item:first-child{
+    grid-column:auto;
+  }
+
+  .footer{
+    display:block;
+    text-align:center;
   }
 }
 </style>
@@ -274,135 +763,846 @@ footer {
 
 <body>
 
-<nav>
-  <div class="logo">STUDIO 23</div>
+<header class="header" id="header">
 
-  <div>
-    <a href="#services">Services</a>
-    <a href="#about">Le studio</a>
-    <a href="#contact">Contact</a>
+  <div class="nav">
+
+    <a href="#home" class="logo">
+      STUDIO <span>23</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+
+      <a href="#services">Services</a>
+      <a href="#about">Studio</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Contact</a>
+
+      <a href="#" class="nav-button" id="openBooking">
+        Réserver
+      </a>
+
+    </nav>
+
+    <button class="menu" id="menu">
+      ☰
+    </button>
+
   </div>
-</nav>
 
-<section class="hero">
+</header>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
 
   <div class="hero-content">
 
-    <div class="small-title">Barber Studio • Marrakech</div>
+    <div class="tag">
+      Barber Studio • Marrakech
+    </div>
 
-    <h1>STUDIO<br>23</h1>
+    <h1>
+      YOUR STYLE.<br>
+      <span>OUR CRAFT.</span>
+    </h1>
 
-    <p>
+    <p class="hero-text">
       Une expérience barber moderne, précise et élégante.
-      Votre style, notre savoir-faire.
+      Des coupes soignées, des finitions nettes et une attention
+      particulière à chaque détail.
     </p>
 
     <div class="buttons">
-      <a class="btn btn-main" href="#contact">Réserver</a>
 
-      <a class="btn btn-second"
-         href="tel:+212600000000">
-        Appeler
+      <a href="#" class="btn btn-gold" id="heroBooking">
+        Réserver maintenant →
       </a>
+
+      <a href="tel:+212700651679
+      " class="btn btn-outline">
+        Appeler le studio
+      </a>
+
     </div>
 
   </div>
 
+  <div class="scroll">
+    SCROLL
+    <div class="scroll-line"></div>
+  </div>
+
 </section>
+
+
+<!-- SERVICES -->
 
 <section id="services">
 
-  <div class="section-title">
-    <span>Nos services</span>
+  <div class="container">
 
-    <h2>L'essentiel, parfaitement exécuté.</h2>
+    <div class="services-head reveal">
 
-    <p>
-      Des prestations simples, précises et adaptées à votre style.
-    </p>
-  </div>
+      <div>
 
-  <div class="services">
+        <div class="kicker">
+          01 — Services
+        </div>
 
-    <div class="card">
-      <div class="card-number">01</div>
-      <h3>Coupe</h3>
-      <p>Coupe moderne réalisée avec précision.</p>
-      <div class="price">80 DH</div>
+        <h2 class="section-title">
+          L'essentiel,<br>
+          parfaitement exécuté.
+        </h2>
+
+      </div>
+
+      <p class="section-description">
+        Des prestations précises, modernes et pensées pour
+        une finition impeccable.
+      </p>
+
     </div>
 
-    <div class="card">
-      <div class="card-number">02</div>
-      <h3>Barbe</h3>
-      <p>Taillage et finition de la barbe.</p>
-      <div class="price">50 DH</div>
-    </div>
 
-    <div class="card">
-      <div class="card-number">03</div>
-      <h3>Coupe + Barbe</h3>
-      <p>Le service complet pour un look impeccable.</p>
-      <div class="price">120 DH</div>
+    <div class="services">
+
+      <article class="service reveal">
+
+        <div class="service-number">
+          01
+        </div>
+
+        <h3>
+          Coupe
+        </h3>
+
+        <p>
+          Coupe moderne avec finitions précises.
+        </p>
+
+        <div class="price">
+          80 DH
+        </div>
+
+      </article>
+
+
+      <article class="service reveal">
+
+        <div class="service-number">
+          02
+        </div>
+
+        <h3>
+          Barbe
+        </h3>
+
+        <p>
+          Taillage, contours et finition.
+        </p>
+
+        <div class="price">
+          50 DH
+        </div>
+
+      </article>
+
+
+      <article class="service reveal">
+
+        <div class="service-number">
+          03
+        </div>
+
+        <h3>
+          Coupe + Barbe
+        </h3>
+
+        <p>
+          Le service complet pour un look impeccable.
+        </p>
+
+        <div class="price">
+          120 DH
+        </div>
+
+      </article>
+
     </div>
 
   </div>
 
 </section>
+
+
+<!-- ABOUT -->
 
 <section class="about" id="about">
 
-  <div class="about-image"></div>
+  <div class="container about-grid">
 
-  <div class="about-text">
+    <div class="about-image reveal"></div>
 
-    <div class="small-title">Studio 23</div>
+    <div class="reveal">
 
-    <h2>Plus qu'une coupe.</h2>
+      <div class="kicker">
+        02 — Le studio
+      </div>
 
-    <p>
-      Studio 23 propose une expérience moderne dans une ambiance
-      soignée et professionnelle.
-    </p>
+      <h2 class="section-title">
+        Plus qu'une<br>
+        coupe.
+      </h2>
 
-    <p>
-      Chaque détail compte : la coupe, les finitions et surtout
-      votre satisfaction.
-    </p>
+      <p class="section-description">
+        Studio 23 propose une expérience moderne dans une
+        ambiance soignée et professionnelle.
+      </p>
+
+      <p class="section-description">
+        Chaque détail compte : la coupe, les finitions
+        et surtout votre satisfaction.
+      </p>
+
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>23</strong>
+          <small>Studio</small>
+        </div>
+
+        <div class="stat">
+          <strong>100%</strong>
+          <small>Attention</small>
+        </div>
+
+        <div class="stat">
+          <strong>PRO</strong>
+          <small>Service</small>
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
-<section class="contact" id="contact">
 
-  <div class="small-title">Prendre rendez-vous</div>
+<!-- GALLERY -->
 
-  <h2>Votre prochain look commence ici.</h2>
+<section id="gallery">
 
-  <p>
-    Contactez Studio 23 pour réserver votre rendez-vous.
-  </p>
+  <div class="container">
 
-  <div class="buttons" style="justify-content:center;">
+    <div class="reveal">
 
-    <a class="btn btn-main"
-       href="tel:+212700651679">
-      📞 Appeler
-    </a>
+      <div class="kicker">
+        03 — Galerie
+      </div>
 
-    <a class="btn btn-second"
-       href="https://wa.me/212700651679"
-       target="_blank">
-      💬 WhatsApp
-    </a>
+      <h2 class="section-title">
+        L'univers<br>
+        Studio 23.
+      </h2>
+
+      <p class="section-description">
+        Clique sur une photo pour l'ouvrir en grand.
+      </p>
+
+    </div>
+
+
+    <div class="gallery reveal">
+
+      <button class="gallery-item"
+        data-image="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1500&q=90">
+
+        <img
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85"
+          alt="Studio barber">
+
+      </button>
+
+
+      <button class="gallery-item"
+        data-image="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1500&q=90">
+
+        <img
+          src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=85"
+          alt="Coupe barber">
+
+      </button>
+
+
+      <button class="gallery-item"
+        data-image="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1500&q=90">
+
+        <img
+          src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=800&q=85"
+          alt="Barber">
+
+      </button>
+
+
+      <button class="gallery-item"
+        data-image="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?auto=format&fit=crop&w=1500&q=90">
+
+        <img
+          src="https://images.unsplash.com/photo-1622288432450-277d0fef5ed6?auto=format&fit=crop&w=800&q=85"
+          alt="Barber tools">
+
+      </button>
+
+    </div>
 
   </div>
 
 </section>
+
+
+<!-- CONTACT -->
+
+<section class="cta" id="contact">
+
+  <div class="container">
+
+    <div class="cta-box reveal">
+
+      <div>
+
+        <div class="kicker">
+          04 — Rendez-vous
+        </div>
+
+        <h2>
+          Prêt pour<br>
+          le prochain look ?
+        </h2>
+
+        <p>
+          Réserve ton créneau ou contacte directement
+          Studio 23.
+        </p>
+
+        <div class="buttons" style="margin-top:30px">
+
+          <button class="btn btn-gold" id="bookingButton">
+            Réserver →
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="contact-list">
+
+        <a
+          class="contact-link"
+          href="tel:+212700651679">
+
+          <span>
+            📞 Appeler
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+
+        <a
+          class="contact-link"
+          href="https://wa.me/212700651679?text=Bonjour%20Studio%2023%2C%20je%20voudrais%20prendre%20rendez-vous."
+          target="_blank">
+
+          <span>
+            💬 WhatsApp
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+
+        <a
+          class="contact-link"
+          href="#home">
+
+          <span>
+            📍 Marrakech
+          </span>
+
+          <span>
+            ↑
+          </span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
 
 <footer>
-  © 2026 Studio 23 — Barber Studio
+
+  <div class="container footer">
+
+    <div>
+      © 2026 Studio 23 — Barber Studio
+    </div>
+
+    <div>
+      Crafted with precision.
+    </div>
+
+  </div>
+
 </footer>
+
+
+<button class="top" id="top">
+  ↑
+</button>
+
+
+<!-- RESERVATION -->
+
+<div class="modal" id="bookingModal">
+
+  <div class="modal-card">
+
+    <button class="close" id="closeBooking">
+      ×
+    </button>
+
+    <div class="kicker">
+      Studio 23
+    </div>
+
+    <h3>
+      Réserver un rendez-vous
+    </h3>
+
+    <p>
+      Choisis ton service et prépare ta demande WhatsApp.
+    </p>
+
+    <form class="form" id="bookingForm">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Ton prénom"
+        required>
+
+      <select id="service" required>
+
+        <option value="">
+          Choisir un service
+        </option>
+
+        <option value="Coupe">
+          Coupe
+        </option>
+
+        <option value="Barbe">
+          Barbe
+        </option>
+
+        <option value="Coupe + Barbe">
+          Coupe + Barbe
+        </option>
+
+      </select>
+
+      <input
+        type="date"
+        id="date"
+        required>
+
+      <input
+        type="time"
+        id="time"
+        required>
+
+      <button
+        type="submit"
+        class="btn btn-gold">
+
+        Continuer sur WhatsApp →
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- GALLERY MODAL -->
+
+<div class="modal" id="imageModal">
+
+  <div class="modal-card">
+
+    <button class="close" id="closeImage">
+      ×
+    </button>
+
+    <img
+      id="bigImage"
+      src=""
+      alt="Studio 23"
+      style="width:100%;border-radius:15px">
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* NAVBAR */
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+  header.classList.toggle(
+    "scrolled",
+    window.scrollY > 30
+  );
+
+});
+
+
+/* MOBILE MENU */
+
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click", () => {
+
+  navLinks.classList.toggle("open");
+
+  menu.textContent =
+    navLinks.classList.contains("open")
+    ? "×"
+    : "☰";
+
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    navLinks.classList.remove("open");
+    menu.textContent = "☰";
+
+  });
+
+});
+
+
+/* SCROLL ANIMATIONS */
+
+const observer = new IntersectionObserver(
+
+  entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("show");
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold:.12
+  }
+
+);
+
+
+document.querySelectorAll(".reveal").forEach(element => {
+
+  observer.observe(element);
+
+});
+
+
+/* TOP BUTTON */
+
+const topButton = document.getElementById("top");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 500){
+
+    topButton.classList.add("show");
+
+  }else{
+
+    topButton.classList.remove("show");
+
+  }
+
+});
+
+
+topButton.addEventListener("click", () => {
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+});
+
+
+/* BOOKING MODAL */
+
+const bookingModal =
+  document.getElementById("bookingModal");
+
+const openBooking =
+  document.getElementById("openBooking");
+
+const heroBooking =
+  document.getElementById("heroBooking");
+
+const bookingButton =
+  document.getElementById("bookingButton");
+
+const closeBooking =
+  document.getElementById("closeBooking");
+
+
+function showBooking(){
+
+  bookingModal.classList.add("active");
+
+  document.body.classList.add("lock");
+
+}
+
+
+function hideBooking(){
+
+  bookingModal.classList.remove("active");
+
+  document.body.classList.remove("lock");
+
+}
+
+
+openBooking.addEventListener(
+  "click",
+  event => {
+
+    event.preventDefault();
+
+    showBooking();
+
+  }
+);
+
+
+heroBooking.addEventListener(
+  "click",
+  event => {
+
+    event.preventDefault();
+
+    showBooking();
+
+  }
+);
+
+
+bookingButton.addEventListener(
+  "click",
+  showBooking
+);
+
+
+closeBooking.addEventListener(
+  "click",
+  hideBooking
+);
+
+
+bookingModal.addEventListener(
+  "click",
+  event => {
+
+    if(event.target === bookingModal){
+
+      hideBooking();
+
+    }
+
+  }
+);
+
+
+/* WHATSAPP BOOKING */
+
+document
+  .getElementById("bookingForm")
+  .addEventListener("submit", event => {
+
+    event.preventDefault();
+
+    const name =
+      document.getElementById("name").value;
+
+    const service =
+      document.getElementById("service").value;
+
+    const date =
+      document.getElementById("date").value;
+
+    const time =
+      document.getElementById("time").value;
+
+
+    const message =
+      "Bonjour Studio 23,%0A%0A" +
+      "Je voudrais réserver un rendez-vous.%0A%0A" +
+      "Prénom : " +
+      encodeURIComponent(name) +
+      "%0AService : " +
+      encodeURIComponent(service) +
+      "%0ADate : " +
+      encodeURIComponent(date) +
+      "%0AHeure : " +
+      encodeURIComponent(time);
+
+
+    window.open(
+      "https://wa.me/212700651679?text=" + message,
+      "_blank"
+    );
+
+
+    hideBooking();
+
+  });
+
+
+/* GALLERY */
+
+const imageModal =
+  document.getElementById("imageModal");
+
+const bigImage =
+  document.getElementById("bigImage");
+
+const closeImage =
+  document.getElementById("closeImage");
+
+
+document.querySelectorAll(".gallery-item")
+.forEach(item => {
+
+  item.addEventListener("click", () => {
+
+    bigImage.src =
+      item.dataset.image;
+
+    imageModal.classList.add("active");
+
+    document.body.classList.add("lock");
+
+  });
+
+});
+
+
+closeImage.addEventListener(
+  "click",
+  () => {
+
+    imageModal.classList.remove("active");
+
+    document.body.classList.remove("lock");
+
+  }
+);
+
+
+imageModal.addEventListener(
+  "click",
+  event => {
+
+    if(event.target === imageModal){
+
+      imageModal.classList.remove("active");
+
+      document.body.classList.remove("lock");
+
+    }
+
+  }
+);
+
+
+/* ESCAPE */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Escape"){
+
+      hideBooking();
+
+      imageModal.classList.remove("active");
+
+      document.body.classList.remove("lock");
+
+    }
+
+  }
+);
+
+
+/* TODAY AS MINIMUM DATE */
+
+const dateInput =
+  document.getElementById("date");
+
+dateInput.min =
+  new Date().toISOString().split("T")[0];
+
+</script>
 
 </body>
 </html>
