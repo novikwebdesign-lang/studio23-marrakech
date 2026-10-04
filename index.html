@@ -1,134 +1,316 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio 23 | Barber Marrakech</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#090909;color:#fff}
-header{position:absolute;top:0;width:100%;padding:25px 7%;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.logo{font-size:25px;font-weight:bold;letter-spacing:5px}
-nav{display:flex;gap:25px}
-nav a{color:white;text-decoration:none;font-size:14px}
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding:120px 7%;
-background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,0,0,.25)),
-url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1800&q=85") center/cover;
-}
-.content{max-width:700px}
-.label{letter-spacing:5px;font-size:13px;margin-bottom:20px;color:#ccc}
-h1{font-size:clamp(60px,10vw,120px);line-height:.9;margin-bottom:25px}
-.hero p{font-size:18px;color:#ccc;max-width:560px;margin-bottom:35px}
-.buttons{display:flex;gap:15px;flex-wrap:wrap}
-.btn{padding:15px 28px;border:1px solid white;color:white;text-decoration:none;font-weight:bold}
-.btn.main{background:white;color:#000}
-section{padding:100px 7%}
-.intro{text-align:center;background:#111}
-.intro h2,.title h2{font-size:50px;margin-bottom:20px}
-.intro p{max-width:700px;margin:auto;color:#aaa}
-.title{text-align:center;margin-bottom:50px}
-.title small{letter-spacing:4px;color:#888}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{border:1px solid #292929;padding:35px;min-height:220px}
-.card span{color:#777}
-.card h3{font-size:28px;margin:30px 0 10px}
-.card p{color:#999}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;background:#151515}
-.about-img{
-height:500px;
-background:url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=85") center/cover
-}
-.about h2{font-size:55px;line-height:1;margin:20px 0}
-.about p{color:#aaa;font-size:17px;margin-bottom:30px}
-.cta{text-align:center;background:#0c0c0c}
-.cta h2{font-size:55px;margin-bottom:20px}
-.cta p{color:#aaa;margin-bottom:30px}
-footer{padding:30px 7%;display:flex;justify-content:space-between;background:#050505;color:#777}
-footer strong{color:white}
-@media(max-width:800px){
-nav{display:none}
-.hero{padding:120px 6% 80px}
-section{padding:75px 6%}
-.cards{grid-template-columns:1fr}
-.about{grid-template-columns:1fr}
-.about-img{height:350px}
-.intro h2,.title h2,.cta h2,.about h2{font-size:40px}
-footer{flex-direction:column;gap:10px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 23 Marrakech</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,17,17,0.95);
+      border-bottom: 1px solid #333;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #d6ad60;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 6%;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
+        url("photo1.jpg") center/cover;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .small-title {
+      color: #d6ad60;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 95px);
+      line-height: .95;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      color: #ddd;
+      max-width: 550px;
+      font-size: 18px;
+      margin-bottom: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d6ad60;
+      color: #111;
+      padding: 15px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 3px;
+      margin-right: 10px;
+    }
+
+    .btn-dark {
+      background: transparent;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    section {
+      padding: 90px 6%;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .section-title span {
+      color: #d6ad60;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      margin-top: 10px;
+    }
+
+    .services {
+      background: #f4f1eb;
+      color: #111;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #ddd;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .price {
+      color: #9b7534;
+      font-weight: bold;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    .booking {
+      text-align: center;
+      background: #191919;
+    }
+
+    .booking h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .booking p {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      padding: 30px 6%;
+      text-align: center;
+      color: #888;
+      border-top: 1px solid #333;
+    }
+
+    @media (max-width: 800px) {
+      nav {
+        display: none;
+      }
+
+      .service-grid,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 75vh;
+      }
+
+      .section-title h2,
+      .booking h2 {
+        font-size: 38px;
+      }
+
+      .gallery img {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">STUDIO 23</div>
-<nav>
-<a href="#services">Services</a>
-<a href="#studio">Le Studio</a>
-<a href="#contact">Contact</a>
-</nav>
+  <div class="logo">STUDIO 23</div>
+
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#services">Services</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Réserver</a>
+  </nav>
 </header>
-<section class="hero">
-<div class="content">
-<div class="label">BARBERSHOP · MARRAKECH</div>
-<h1>STUDIO<br>23</h1>
-<p>Votre style. Notre signature. Une expérience barber moderne au cœur de Marrakech.</p>
-<div class="buttons">
-<a class="btn main" href="#contact">RÉSERVER</a>
-<a class="btn" href="#services">NOS SERVICES</a>
-</div>
-</div>
-</section>
-<section class="intro">
-<h2>L'expérience Studio 23</h2>
-<p>Un espace dédié au style, à la précision et au savoir-faire barber.</p>
-</section>
-<section id="services">
-<div class="title">
-<small>NOS EXPERTISES</small>
-<h2>Services</h2>
-</div>
-<div class="cards">
-<div class="card">
-<span>01</span>
-<h3>Coupe</h3>
-<p>Des coupes modernes réalisées avec précision.</p>
-</div>
-<div class="card">
-<span>02</span>
-<h3>Barbe</h3>
-<p>Taille et finition pour une barbe parfaitement travaillée.</p>
-</div>
-<div class="card">
-<span>03</span>
-<h3>Style</h3>
-<p>Une finition professionnelle adaptée à votre look.</p>
-</div>
-</div>
-</section>
-<section class="about" id="studio">
-<div class="about-img"></div>
-<div>
-<small>STUDIO 23 · MARRAKECH</small>
-<h2>Le détail fait la différence.</h2>
-<p>Chaque détail compte. De la première consultation à la finition, l'objectif est de créer un résultat qui vous ressemble.</p>
-<a class="btn" href="#contact">DÉCOUVRIR</a>
-</div>
-</section>
-<section class="cta" id="contact">
-<h2>Prêt pour votre prochain look ?</h2>
-<p>Réservez votre moment chez Studio 23 Marrakech.</p>
-<div class="buttons">
-<a class="btn main" href="#">RÉSERVER</a>
-<a class="btn" href="#">WHATSAPP</a>
-</div>
-</section>
+
+<main>
+
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <div class="small-title">Barber • Marrakech</div>
+
+      <h1>Votre style.<br>Notre signature.</h1>
+
+      <p>
+        Une expérience barber moderne, précise et élégante
+        au cœur de Marrakech.
+      </p>
+
+      <a class="btn" href="#contact">Réserver</a>
+      <a class="btn btn-dark" href="#services">Découvrir</a>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+
+    <div class="section-title">
+      <span>Nos prestations</span>
+      <h2>Des coupes pensées pour votre style.</h2>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service">
+        <h3>Coupe classique</h3>
+        <p>Une coupe propre et soignée adaptée à votre style.</p>
+        <div class="price">XX DH</div>
+      </div>
+
+      <div class="service">
+        <h3>Dégradé</h3>
+        <p>Un dégradé précis avec une finition professionnelle.</p>
+        <div class="price">XX DH</div>
+      </div>
+
+      <div class="service">
+        <h3>Barbe</h3>
+        <p>Entretien et finition pour une barbe parfaitement dessinée.</p>
+        <div class="price">XX DH</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="galerie">
+
+    <div class="section-title">
+      <span>Notre travail</span>
+      <h2>Quelques réalisations.</h2>
+    </div>
+
+    <div class="gallery">
+      <img src="photo1.jpg" alt="Coupe Studio 23">
+      <img src="photo2.jpg" alt="Coupe Studio 23">
+      <img src="photo3.jpg" alt="Coupe Studio 23">
+    </div>
+
+  </section>
+
+  <section class="booking" id="contact">
+
+    <h2>Prêt pour votre prochaine coupe ?</h2>
+
+    <p>
+      Contactez Studio 23 Marrakech pour prendre rendez-vous.
+    </p>
+
+    <a class="btn" href="https://wa.me/212XXXXXXXXX">
+      Réserver sur WhatsApp
+    </a>
+
+  </section>
+
+</main>
+
 <footer>
-<div><strong>STUDIO 23</strong> · MARRAKECH</div>
-<div>© 2026 · Démo concept</div>
+  © 2026 Studio 23 Marrakech — Tous droits réservés.
 </footer>
+
 </body>
 </html>
