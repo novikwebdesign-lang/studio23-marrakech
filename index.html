@@ -1,395 +1,407 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio 23 Marrakech</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<title>Studio 23 — Barber</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      line-height: 1.6;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(17,17,17,0.95);
-      border-bottom: 1px solid #333;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0b0b;
+  color: #ffffff;
+  line-height: 1.6;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+nav {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7%;
+  border-bottom: 1px solid #222;
+  background: #0b0b0b;
+}
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 14px;
-    }
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
 
-    nav a:hover {
-      color: #d6ad60;
-    }
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 14px;
+}
 
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      padding: 70px 6%;
-      background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
-        url("photo1.jpg") center/cover;
-    }
+nav a:hover {
+  color: #fff;
+}
 
-    .hero-content {
-      max-width: 700px;
-    }
+.hero {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  padding: 70px 7%;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.92), rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+}
 
-    .small-title {
-      color: #d6ad60;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
+.hero-content {
+  max-width: 620px;
+}
 
-    h1 {
-      font-size: clamp(48px, 8vw, 95px);
-      line-height: .95;
-      margin-bottom: 25px;
-    }
+.small-title {
+  color: #c9a45c;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
 
-    .hero p {
-      color: #ddd;
-      max-width: 550px;
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
+h1 {
+  font-size: clamp(50px, 8vw, 90px);
+  line-height: .95;
+  margin-bottom: 25px;
+}
 
-    .btn {
-      display: inline-block;
-      background: #d6ad60;
-      color: #111;
-      padding: 15px 25px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 3px;
-      margin-right: 10px;
-    }
+.hero p {
+  color: #d0d0d0;
+  max-width: 500px;
+  margin-bottom: 35px;
+  font-size: 17px;
+}
 
-    .btn-dark {
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-    }
+.buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-    section {
-      padding: 90px 6%;
-    }
+.btn {
+  display: inline-block;
+  padding: 14px 25px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: .25s;
+}
 
-    .section-title {
-      max-width: 700px;
-      margin-bottom: 45px;
-    }
+.btn-main {
+  background: #c9a45c;
+  color: #111;
+}
 
-    .section-title span {
-      color: #d6ad60;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
+.btn-main:hover {
+  transform: translateY(-2px);
+}
 
-    .section-title h2 {
-      font-size: 48px;
-      margin-top: 10px;
-    }
+.btn-second {
+  border: 1px solid #555;
+  color: white;
+}
 
-    .services {
-      background: #f4f1eb;
-      color: #111;
-    }
+.btn-second:hover {
+  border-color: #c9a45c;
+}
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+section {
+  padding: 90px 7%;
+}
 
-    .service {
-      background: #fff;
-      padding: 30px;
-      border: 1px solid #ddd;
-    }
+.section-title {
+  max-width: 650px;
+  margin-bottom: 45px;
+}
 
-    .service h3 {
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
+.section-title span {
+  color: #c9a45c;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
 
-    .price {
-      color: #9b7534;
-      font-weight: bold;
-      font-size: 20px;
-      margin-top: 20px;
-    }
+.section-title h2 {
+  font-size: 42px;
+  margin-top: 10px;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
+.section-title p {
+  color: #999;
+  margin-top: 12px;
+}
 
-    .gallery img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      display: block;
-      transition: transform .3s;
-    }
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
-    .gallery img:hover {
-      transform: scale(1.02);
-    }
+.card {
+  background: #131313;
+  border: 1px solid #242424;
+  padding: 30px;
+  border-radius: 8px;
+  transition: .25s;
+}
 
-    .booking {
-      text-align: center;
-      background: #191919;
-    }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #c9a45c;
+}
 
-    .booking h2 {
-      font-size: 50px;
-      margin-bottom: 20px;
-    }
+.card-number {
+  color: #c9a45c;
+  font-size: 13px;
+}
 
-    .booking p {
-      color: #ccc;
-      margin-bottom: 30px;
-    }
+.card h3 {
+  margin: 12px 0 8px;
+  font-size: 22px;
+}
 
-    footer {
-      padding: 30px 6%;
-      text-align: center;
-      color: #888;
-      border-top: 1px solid #333;
-    }
+.card p {
+  color: #999;
+  font-size: 14px;
+}
 
-    @media (max-width: 800px) {
-      nav {
-        display: none;
-      }
+.price {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-      .service-grid,
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+.about {
+  background: #111;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
 
-      .hero {
-        min-height: 75vh;
-      }
+.about-image {
+  min-height: 450px;
+  border-radius: 8px;
+  background:
+    url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=80")
+    center/cover;
+}
 
-      .section-title h2,
-      .booking h2 {
-        font-size: 38px;
-      }
+.about-text h2 {
+  font-size: 45px;
+  margin: 12px 0 20px;
+}
 
-      .gallery img {
-        height: 300px;
-      }
-    }
-  </style>
+.about-text p {
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.contact {
+  text-align: center;
+  background: #0b0b0b;
+}
+
+.contact h2 {
+  font-size: 45px;
+  margin: 10px 0 15px;
+}
+
+.contact p {
+  color: #999;
+  margin-bottom: 30px;
+}
+
+footer {
+  padding: 30px 7%;
+  border-top: 1px solid #222;
+  color: #777;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+
+  nav {
+    padding: 0 5%;
+  }
+
+  nav a {
+    display: none;
+  }
+
+  .hero {
+    min-height: 600px;
+    padding: 60px 6%;
+  }
+
+  section {
+    padding: 70px 6%;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .about-image {
+    min-height: 350px;
+  }
+
+  .section-title h2,
+  .about-text h2,
+  .contact h2 {
+    font-size: 35px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
- <div class="logo">
-   <img src="WhatsApp%20Image%202026-10-04%20at%2018.37.31.jpeg" alt="Studio 23 Marrakech" style="width: 80px; height: auto;">
-</div> 
+<nav>
+  <div class="logo">STUDIO 23</div>
 
-  <nav>
-    <a href="#accueil">Accueil</a>
+  <div>
     <a href="#services">Services</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#contact">Réserver</a>
-  </nav>
-</header>
-
-<main>
-
-  <section class="hero" id="accueil">
-    <div class="hero-content">
-      <div class="small-title">Barber • Marrakech</div>
-
-      <h1>Votre style.<br>Notre signature.</h1>
-
-      <p>
-        Une expérience barber moderne, précise et élégante
-        au cœur de Marrakech.
-      </p>
-
-      <a class="btn" href="#contact">Réserver</a>
-      <a class="btn btn-dark" href="#services">Découvrir</a>
-    </div>
-  </section>
-
-  <section class="services" id="services">
-
-    <div class="section-title">
-      <span>Nos prestations</span>
-      <h2>Des coupes pensées pour votre style.</h2>
-    </div>
-
-   <div class="service-grid">
-
-  <div class="service">
-    <h3>Coupe / Haircut</h3>
-    <p>Coupe moderne adaptée à votre style.</p>
-    <div class="price">120 DH</div>
+    <a href="#about">Le studio</a>
+    <a href="#contact">Contact</a>
   </div>
+</nav>
 
-  <div class="service">
-    <h3>Coupe + Barbe / Haircut + Beard</h3>
-    <p>Coupe et barbe avec finition professionnelle.</p>
-    <div class="price">150 DH</div>
-  </div>
+<section class="hero">
 
-  <div class="service">
-    <h3>Coupe + Barbe + Soin Natus Intense</h3>
-    <p>Haircut + Beard + Natus Intense Purifying Facial</p>
-    <div class="price">250 DH</div>
-  </div>
+  <div class="hero-content">
 
-  <div class="service">
-    <h3>Tresses / Braids / Cornrows / Twists</h3>
-    <p>Prix sur demande / Price on request</p>
-    <div class="price">Sur demande</div>
-  </div>
+    <div class="small-title">Barber Studio • Marrakech</div>
 
-  <div class="service">
-    <h3>Mèches / Hair Highlights</h3>
-    <p>Hair highlights</p>
-    <div class="price">À partir de 300 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Coloration complète / Full Head Color</h3>
-    <p>Full head color</p>
-    <div class="price">À partir de 500 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Coloration barbe / Beard Coloring</h3>
-    <p>Beard coloring</p>
-    <div class="price">150 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Brushing / Blow Dry</h3>
-    <p>Brushing professionnel</p>
-    <div class="price">50 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Soin capillaire vitaminé</h3>
-    <p>Vitamin Hair Treatment – Shine & Vitality</p>
-    <div class="price">200 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Contour / Hairline</h3>
-    <p>Finition précise de la ligne</p>
-    <div class="price">50 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Motif capillaire / Hair Design</h3>
-    <p>Design personnalisé</p>
-    <div class="price">50 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Barbe / Beard</h3>
-    <p>Entretien et finition</p>
-    <div class="price">50 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Rasage à l'ancienne</h3>
-    <p>Traditional Shave – Hot Towel & Steam</p>
-    <div class="price">90 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Soin du visage premium Natus</h3>
-    <p>Natus Premium Facial Treatment</p>
-    <div class="price">150 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Blanchiment dentaire / Teeth Whitening</h3>
-    <p>Teeth whitening</p>
-    <div class="price">500 DH</div>
-  </div>
-
-  <div class="service">
-    <h3>Lissage protéine bio</h3>
-    <p>Organic Protein Hair</p>
-    <div class="price">À partir de 500 DH</div>
-  </div>
-
-</div>
-  </section>
-
-  <section id="galerie">
-
-    <div class="section-title">
-      <span>Notre travail</span>
-      <h2>Quelques réalisations.</h2>
-    </div>
-
-    <div class="gallery">
-     <img src="WhatsApp Image 2026-10-04 at 15.48.39 (1).jpeg" alt="Coupe Studio 23">
-<img src="WhatsApp Image 2026-10-04 at 15.48.39.jpeg" alt="Coupe Studio 23">
-<img src="WhatsApp Image 2026-10-04 at 15.48.43 (1).jpeg" alt="Coupe Studio 23">
-    </div>
-
-  </section>
-
-  <section class="booking" id="contact">
-
-    <h2>Prêt pour votre prochaine coupe ?</h2>
+    <h1>STUDIO<br>23</h1>
 
     <p>
-      Contactez Studio 23 Marrakech pour prendre rendez-vous.
+      Une expérience barber moderne, précise et élégante.
+      Votre style, notre savoir-faire.
     </p>
 
-    <a class="btn" href="https://wa.me/212700651679">
-      Réserver sur WhatsApp
+    <div class="buttons">
+      <a class="btn btn-main" href="#contact">Réserver</a>
+
+      <a class="btn btn-second"
+         href="tel:+212600000000">
+        Appeler
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="services">
+
+  <div class="section-title">
+    <span>Nos services</span>
+
+    <h2>L'essentiel, parfaitement exécuté.</h2>
+
+    <p>
+      Des prestations simples, précises et adaptées à votre style.
+    </p>
+  </div>
+
+  <div class="services">
+
+    <div class="card">
+      <div class="card-number">01</div>
+      <h3>Coupe</h3>
+      <p>Coupe moderne réalisée avec précision.</p>
+      <div class="price">80 DH</div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">02</div>
+      <h3>Barbe</h3>
+      <p>Taillage et finition de la barbe.</p>
+      <div class="price">50 DH</div>
+    </div>
+
+    <div class="card">
+      <div class="card-number">03</div>
+      <h3>Coupe + Barbe</h3>
+      <p>Le service complet pour un look impeccable.</p>
+      <div class="price">120 DH</div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="about" id="about">
+
+  <div class="about-image"></div>
+
+  <div class="about-text">
+
+    <div class="small-title">Studio 23</div>
+
+    <h2>Plus qu'une coupe.</h2>
+
+    <p>
+      Studio 23 propose une expérience moderne dans une ambiance
+      soignée et professionnelle.
+    </p>
+
+    <p>
+      Chaque détail compte : la coupe, les finitions et surtout
+      votre satisfaction.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <div class="small-title">Prendre rendez-vous</div>
+
+  <h2>Votre prochain look commence ici.</h2>
+
+  <p>
+    Contactez Studio 23 pour réserver votre rendez-vous.
+  </p>
+
+  <div class="buttons" style="justify-content:center;">
+
+    <a class="btn btn-main"
+       href="tel:+212700651679">
+      📞 Appeler
     </a>
 
-  </section>
+    <a class="btn btn-second"
+       href="https://wa.me/212700651679"
+       target="_blank">
+      💬 WhatsApp
+    </a>
 
-</main>
+  </div>
+
+</section>
 
 <footer>
-  © 2026 Studio 23 Marrakech — Tous droits réservés.
+  © 2026 Studio 23 — Barber Studio
 </footer>
 
 </body>
